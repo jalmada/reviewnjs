@@ -1,0 +1,6 @@
+@html.extend('layout', function(model){
+    @html.block('body', (model) => {
+    
+        <p>@model.user </p>
+    });    
+})

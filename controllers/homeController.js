@@ -6,7 +6,7 @@ HomeController = (app) => {
         //res.send(`Hola ${req.url}`);
 
         data.getNoteCategories((err, result) => {
-            res.render("./index", {title: "Trying Vash", user: "xaratustra", error: err, categories: result});
+            res.render("./index", {title: "Trying Varsh", user: "xaratustra", error: err, categories: result});
         });
     });
 }

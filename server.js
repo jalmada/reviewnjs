@@ -1,5 +1,6 @@
 var http = require("http");
 var express = require("express");
+var controllers = require("./controllers");
 //var ejsEngine = require("ejs-locals");
 
 
@@ -10,12 +11,10 @@ var app = express();
 //app.engine("ejs", ejsEngine);
 //app.set("view engine","ejs");
 app.set("view engine","vash");
+app.use(express.static(__dirname + "/public"));
 
+controllers.HomeController(app);
 
-app.get("/",(req, res) => {
-    //res.send(`Hola ${req.url}`);
-    res.render("./index", {title: "Trying Vash", user: "xaratustra"});
-});
 
 app.get("/users",(req, res) => {
     res.set("Content-Type", "application/json");

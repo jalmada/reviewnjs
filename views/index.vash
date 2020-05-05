@@ -1,6 +1,14 @@
 @html.extend('layout', function(model){
-    @html.block('body', (model) => {
+    @html.block('body', function(model) {
     
         <p>@model.user </p>
-    });    
+
+        @if (model.error){
+            <p class="text-error"> Error Occurred: @model.error </p>
+        }
+
+        @model.categories.forEach((category) => {
+            <div><span>@(category.notes ? category.notes.length : 0) </span><a href="#">@category.name</a></div>
+        })
+    })
 })

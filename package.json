@@ -8,6 +8,7 @@
     "ejs-locals": "^1.0.2",
     "express": "^4.17.1",
     "jade": "^1.11.0",
+    "node-sqlserver-unofficial": "^1.4.0",
     "underscore": "^1.10.2",
     "vash": "^0.13.0"
   },

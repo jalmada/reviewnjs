@@ -23,11 +23,34 @@ app.get("/users",(req, res) => {
 
 
 app.get("/api/sql", (req, res) => {
-    var msnodesql = require("node-sqlserver-unofficial")
-    var connStr = "Server=localhost\SQLEXPRESS;Database=test;Trusted_Connection=True;";
+    var sql = require("mssql/msnodesqlv8"); 
+    //var connStr = "Server=localhost\\SQLEXPRESS;Database=test;Trusted_Connection=True;";
+
+    var dbConfig = {    
+        driver: 'msnodesqlv8',
+        connectionString:'Driver={SQL Server Native Client 11.0};Server={localhost\\SQLEXPRESS};Database={test};Trusted_Connection={yes};'
+    };
+
+    // connect to your database
+    sql.connect(dbConfig, (err) => {
+
+        if(err){
+            res.send(err);
+            sql.close();
+        } else {
+            var request = new sql.Request();
+            request.query("Select * from Customer", (err, result) =>{
+                
+                if(err){
+                    res.send(err);
+                } else {
+                    res.send(result);
+                }
+            });
+        }
+    });
 });
+
 var server = http.createServer(app);
-
-
 
 server.listen(3000);

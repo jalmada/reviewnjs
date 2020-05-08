@@ -24,7 +24,7 @@ app.get("/users",(req, res) => {
 
 app.get("/api/sql", (req, res) => {
     var msnodesql = require("node-sqlserver-unofficial")
-    var connStr = "Server=localhost\SQLEXPRESS01;Database=master;Trusted_Connection=True;";
+    var connStr = "Server=localhost\SQLEXPRESS;Database=test;Trusted_Connection=True;";
 });
 var server = http.createServer(app);
 

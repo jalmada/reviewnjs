@@ -24,7 +24,6 @@ app.get("/users",(req, res) => {
 
 app.get("/api/sql", (req, res) => {
     var sql = require("mssql/msnodesqlv8"); 
-    //var connStr = "Server=localhost\\SQLEXPRESS;Database=test;Trusted_Connection=True;";
 
     var dbConfig = {    
         driver: 'msnodesqlv8',

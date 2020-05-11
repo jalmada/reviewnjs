@@ -1,23 +1,21 @@
 var seedData = {};
 
-seedData.InitialNotes = [{
+seedData.InitialNotes = [{name: "History", notes: [{
     name: "History",
     author: "Some Guy",
-    color: "Yellow",
-    notes: ["note", "note2", "nnote3"]
+    color: "Yellow"
 },
 {
     name: "I Like History",
     author: "Some Other Guy",
-    color: "Blue",
-    notes: ["note", "note2", "nnote3"]
+    color: "Blue"
 },
 {
     name: "I hate War",
     author: "Peace Guy",
-    color: "Pink",
-    notes: ["note"]
+    color: "Pink"
 
+}]
 }];
 
 module.exports = seedData;

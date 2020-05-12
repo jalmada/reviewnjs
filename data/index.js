@@ -2,8 +2,19 @@ var seedData = require("./seedData");
 var database = require("./database");
 
 getNoteCategories = (next) => {
-    //console.log(seedData.seedData.InitialNotes);
-    next(null, seedData.InitialNotes);
+    database.GetDb((err, db) => {
+        if(err){
+            next(err, null);
+        } else {
+            db.notes.find({notes: {$size: 3}}).sort({name: 1}).toArray((err, result) => {
+                if(err) {
+                    next(err, null);
+                } else {
+                    next(null, result);
+                }
+            });
+        }
+    });
 };
 
 seedDatabase = () => {

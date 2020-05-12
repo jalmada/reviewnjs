@@ -10,5 +10,7 @@
         @model.categories.forEach((category) => {
             <div><span>@(category.notes ? category.notes.length : 0) </span><a href="#">@category.name</a></div>
         })
+
+        
     })
 })

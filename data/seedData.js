@@ -16,6 +16,22 @@ seedData.InitialNotes = [{name: "History", notes: [{
     color: "Pink"
 
 }]
+}, {name: "People", notes: [{
+    name: "History",
+    author: "Some Guy",
+    color: "Yellow"
+},
+{
+    name: "I Like History",
+    author: "Some Other Guy",
+    color: "Blue"
+},
+{
+    name: "I hate War",
+    author: "Peace Guy",
+    color: "Pink"
+
+}]
 }];
 
 module.exports = seedData;

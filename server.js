@@ -27,7 +27,8 @@ app.get("/api/sql", (req, res) => {
 
     var dbConfig = {    
         driver: 'msnodesqlv8',
-        connectionString:'Driver={SQL Server Native Client 11.0};Server={localhost\\SQLEXPRESS};Database={test};Trusted_Connection={yes};'
+        //connectionString:'Driver={SQL Server Native Client 11.0};Server={localhost\\SQLEXPRESS};Database={test};Trusted_Connection={yes};'
+        connectionString:'Driver={SQL Server Native Client 11.0};Server={localhost\\SQLEXPRESS01};Database={test};Trusted_Connection={yes};'
     };
 
     // connect to your database

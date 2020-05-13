@@ -28,7 +28,7 @@ NotesController = (app) => {
                 res.send("400", "Failed to Add note");
             } else {
                 res.set("Content-Type", "application/json");
-                res.send(201, noteToInsert);
+                res.status(201).send(noteToInsert);
            }
         });
     });

@@ -22,7 +22,7 @@ addNote = (categoryName, noteToInsert, next) => {
         if(err){
             next(err, null);
         } else {
-            db.notes.update({name: categoryName}, {$push: {notes: noteToInsert}}, next);
+            db.notes.updateOne({name: categoryName}, {$push: {notes: noteToInsert}}, next);
         }
     });
 }

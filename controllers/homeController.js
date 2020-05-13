@@ -6,7 +6,13 @@ HomeController = (app) => {
         //res.send(`Hola ${req.url}`);
 
         data.getNoteCategories((err, result) => {
-            res.render("./index", {title: "Trying Varsh", user: "xaratustra", error: err, categories: result});
+            res.render("./index", {
+                title: "Trying Varsh", 
+                user: "xaratustra", 
+                error: err, 
+                categories: result,
+                newCatError: req.flash("newCatError")
+            });
         });
     });
 
@@ -17,6 +23,7 @@ HomeController = (app) => {
         data.createNewCategory(categoryName, (err) => {
             if(err){
                 console.log(err);
+                req.flash("newCatError", err);
                 res.redirect("/");
             } else {
                 res.redirect(`/notes/${categoryName}`);

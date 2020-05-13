@@ -14,6 +14,10 @@
         <form action="/newCategory" role="form" method="post">
             <input type="text" name="categoryName" placeholder="category" />
             <input type="submit" value="New Category" />
+
+            @if(model.newCatError){
+                <p>@model.newCatError</p>
+            }
         </form>
     })
 })

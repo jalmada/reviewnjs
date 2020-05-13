@@ -23,17 +23,26 @@ createNewCategory = (categoryName, next) => {
             next(err, null);
         } else {
 
-            db.notes.
-            var cat = {
-                name: categoryName,
-                notes: []
-            };
-
-            db.notes.insertOne(cat, (err)=> {
+            db.notes.find({name: categoryName}).count((err, count) => {
                 if(err){
-                    next(err);
+                    next(err, null);
                 } else {
-                    next(null);
+                    if(count != 0){
+                        next("category Already exists");
+                    } else {
+                        var cat = {
+                            name: categoryName,
+                            notes: []
+                        };
+
+                        db.notes.insertOne(cat, (err)=> {
+                            if(err){
+                                next(err);
+                            } else {
+                                next(null);
+                            }
+                        });
+                    }
                 }
             });
         }

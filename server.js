@@ -1,6 +1,9 @@
 var http = require("http");
 var express = require("express");
 var controllers = require("./controllers");
+var flash = require('connect-flash');
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
 //var ejsEngine = require("ejs-locals");
 
 
@@ -13,7 +16,9 @@ var app = express();
 app.set("view engine","vash");
 app.use(express.static(__dirname + "/public"));
 app.use(express.urlencoded({extended : true}));
-
+app.use(cookieParser());
+app.use(session({secret: "PluralsightTheBoard", resave: false, saveUninitialized: true}));
+app.use(flash());
 controllers.HomeController(app);
 
 

@@ -6,11 +6,34 @@ getNoteCategories = (next) => {
         if(err){
             next(err, null);
         } else {
-            db.notes.find({notes: {$size: 3}}).sort({name: 1}).toArray((err, result) => {
+            db.notes.find().sort({name: 1}).toArray((err, result) => {
                 if(err) {
                     next(err, null);
                 } else {
                     next(null, result);
+                }
+            });
+        }
+    });
+};
+
+createNewCategory = (categoryName, next) => {
+    database.GetDb((err, db) => {
+        if(err){
+            next(err, null);
+        } else {
+
+            db.notes.
+            var cat = {
+                name: categoryName,
+                notes: []
+            };
+
+            db.notes.insertOne(cat, (err)=> {
+                if(err){
+                    next(err);
+                } else {
+                    next(null);
                 }
             });
         }
@@ -45,5 +68,6 @@ seedDatabase = () => {
 seedDatabase();
 
 module.exports = {
-    getNoteCategories : getNoteCategories
+    getNoteCategories : getNoteCategories,
+    createNewCategory: createNewCategory
 };

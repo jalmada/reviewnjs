@@ -16,7 +16,6 @@ HomeController = (app) => {
         });
     });
 
-
     app.post("/newCategory", (req, res) => {
         var categoryName = req.body.categoryName;
 
@@ -27,6 +26,17 @@ HomeController = (app) => {
                 res.redirect("/");
             } else {
                 res.redirect(`/notes/${categoryName}`);
+            }
+        });
+    });
+
+    app.get("/notes/:categoryName", (req, res) => {
+        var categoryName = req.params.categoryName;
+        data.getNotes(categoryName, (err, data) => {
+            if(err){
+                console.log(err);
+            } else {
+                res.render("./notes",{title: categoryName, notes: data.notes});
             }
         });
     });

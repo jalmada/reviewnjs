@@ -1,0 +1,15 @@
+@html.extend('layout', function(model){
+    @html.block('body', function(model) {
+        <div>
+            <a href="/">Back</a>
+            <div>
+                @model.notes.forEach((note)=> {
+                    <div style="background-color: @model.color">
+                        <div>@note.name</div>
+                        <div><small>-@note.author</small></div>
+                    </div>
+                })
+            </div>
+        </div>
+    })
+})

@@ -8,7 +8,7 @@
         }
 
         @model.categories.forEach((category) => {
-            <div><span>@(category.notes ? category.notes.length : 0) </span><a href="#">@category.name</a></div>
+            <div><span>@(category.notes ? category.notes.length : 0) </span><a href="/notes/@category.name">@category.name</a></div>
         })
 
         <form action="/newCategory" role="form" method="post">

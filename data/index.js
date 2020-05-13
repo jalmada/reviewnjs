@@ -17,6 +17,16 @@ getNoteCategories = (next) => {
     });
 };
 
+addNote = (categoryName, noteToInsert, next) => {
+    database.GetDb((err, db) => {
+        if(err){
+            next(err, null);
+        } else {
+            db.notes.update({name: categoryName}, {$push: {notes: noteToInsert}}, next);
+        }
+    });
+}
+
 createNewCategory = (categoryName, next) => {
     database.GetDb((err, db) => {
         if(err){
@@ -49,6 +59,16 @@ createNewCategory = (categoryName, next) => {
     });
 };
 
+getNotes = (categoryName, next) =>{
+    database.GetDb((err, db) => {
+        if(err){
+            next(err);
+        } else {
+            db.notes.findOne({name: categoryName}, next);
+        }
+    });
+}
+
 seedDatabase = () => {
     database.GetDb((err, db) => {
         if(err){
@@ -78,5 +98,7 @@ seedDatabase();
 
 module.exports = {
     getNoteCategories : getNoteCategories,
-    createNewCategory: createNewCategory
+    createNewCategory: createNewCategory,
+    getNotes: getNotes,
+    addNote: addNote
 };

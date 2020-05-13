@@ -16,10 +16,12 @@ var app = express();
 app.set("view engine","vash");
 app.use(express.static(__dirname + "/public"));
 app.use(express.urlencoded({extended : true}));
+app.use(express.json());
 app.use(cookieParser());
 app.use(session({secret: "PluralsightTheBoard", resave: false, saveUninitialized: true}));
 app.use(flash());
 controllers.HomeController(app);
+controllers.NotesController(app);
 
 
 app.get("/users",(req, res) => {

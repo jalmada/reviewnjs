@@ -19,8 +19,10 @@ NotesController = (app) => {
         var categoryName = req.params.categoryName;
         var noteToInsert = {
             note: req.body.note,
+            name: req.body.name,
             color: req.body.color,
-            author:"Jose Almada"
+            author: req.body.author,
+
         };
 
         data.addNote(categoryName, noteToInsert, (err) => {

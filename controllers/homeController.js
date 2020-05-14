@@ -30,6 +30,25 @@ HomeController = (app) => {
         });
     });
 
+    app.post("/newNote/:categoryName", (req, res) => {
+        var categoryName = req.params.categoryName;
+        var noteToInsert = {
+            note: req.body.note,
+            name: req.body.name,
+            color: req.body.color,
+            author: req.body.author,
+        };
+
+        data.addNote(categoryName, noteToInsert, (err) => {
+            if(err){
+                console.log(err);
+                req.flash("newNoteError", err);
+            } 
+
+            res.redirect(`/notes/${categoryName}`);
+        });
+    });
+
     app.get("/notes/:categoryName", (req, res) => {
         var categoryName = req.params.categoryName;
         data.getNotes(categoryName, (err, data) => {

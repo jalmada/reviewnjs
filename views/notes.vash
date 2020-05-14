@@ -6,9 +6,21 @@
                 @model.notes.forEach((note)=> {
                     <div style="background-color: @model.color">
                         <div>@note.name</div>
+                        <div>@note.note</div>
                         <div><small>-@note.author</small></div>
                     </div>
                 })
+
+                <form method="post" action="/newNote/@model.title" role="form">
+                    <label for="name">Name: </label> <input type="text" name="name" />
+                    <label for="note">Text: </label> <input type="textarea" name="note" />
+                    <input type="radio" name="color" value="blue" />
+                    <input type="radio" name="color" value="red" />
+                    <input type="radio" name="color" value="green" />
+                    <input type="radio" name="color" value="yellow" />
+                    <label for="author">Author: </label><input type="text" name="author" />
+                    <input type="submit" value="Send" />
+                </form>
             </div>
         </div>
     })

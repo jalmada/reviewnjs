@@ -27,6 +27,8 @@ addNote = (categoryName, noteToInsert, next) => {
     });
 }
 
+
+
 createNewCategory = (categoryName, next) => {
     database.GetDb((err, db) => {
         if(err){
@@ -94,11 +96,21 @@ seedDatabase = () => {
     });
 };
 
+addUser = (user, next) => {
+    database.GetDb((err, db) => {
+        if(err){
+            console.log(`Error: ${err}`);
+        } else {
+        }
+    });
+}
+
 seedDatabase();
 
 module.exports = {
     getNoteCategories : getNoteCategories,
     createNewCategory: createNewCategory,
     getNotes: getNotes,
-    addNote: addNote
+    addNote: addNote,
+    addUser: addUser
 };

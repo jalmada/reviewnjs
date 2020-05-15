@@ -1,6 +1,7 @@
 var http = require("http");
 var express = require("express");
 var controllers = require("./controllers");
+var auth = require("./auth");
 var flash = require('connect-flash');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
@@ -22,6 +23,7 @@ app.use(session({secret: "PluralsightTheBoard", resave: false, saveUninitialized
 app.use(flash());
 controllers.HomeController(app);
 controllers.NotesController(app);
+auth(app);
 
 
 app.get("/users",(req, res) => {

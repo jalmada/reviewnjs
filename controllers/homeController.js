@@ -16,6 +16,8 @@ HomeController = (app) => {
         });
     });
 
+    
+
     app.post("/newCategory", (req, res) => {
         var categoryName = req.body.categoryName;
 

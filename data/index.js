@@ -96,11 +96,22 @@ seedDatabase = () => {
     });
 };
 
+getUser = (username, next) => {
+    database.GetDb((err, db) => {
+        if(err){
+            next(err);
+        } else {
+            db.users.findOne({username: username}, next);
+        }
+    });
+}
+
 addUser = (user, next) => {
     database.GetDb((err, db) => {
         if(err){
             console.log(`Error: ${err}`);
         } else {
+            db.users.insertOne(user, next);
         }
     });
 }
@@ -112,5 +123,6 @@ module.exports = {
     createNewCategory: createNewCategory,
     getNotes: getNotes,
     addNote: addNote,
-    addUser: addUser
+    addUser: addUser,
+    getUser: getUser
 };

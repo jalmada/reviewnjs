@@ -8,10 +8,10 @@ HomeController = (app) => {
         data.getNoteCategories((err, result) => {
             res.render("./index", {
                 title: "Trying Varsh", 
-                user: "xaratustra", 
+                user:  req.user, 
                 error: err, 
                 categories: result,
-                newCatError: req.flash("newCatError")
+                newCatError: req.flash("newCatError"),
             });
         });
     });
@@ -38,7 +38,7 @@ HomeController = (app) => {
             note: req.body.note,
             name: req.body.name,
             color: req.body.color,
-            author: req.body.author,
+            author: req.body.author
         };
 
         data.addNote(categoryName, noteToInsert, (err) => {
@@ -57,7 +57,7 @@ HomeController = (app) => {
             if(err){
                 console.log(err);
             } else {
-                res.render("./notes",{title: categoryName, notes: data.notes});
+                res.render("./notes",{title: categoryName, notes: data.notes, user: req.user});
             }
         });
     });

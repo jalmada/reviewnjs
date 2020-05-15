@@ -1,0 +1,9 @@
+@html.extend('layout', function(model){
+    @html.block('body', function(model) {   
+        <form action="/login" method="post" role="form">
+            <label for="username">Username </label><input type="text" name="username" />
+            <label for="name">Password </label><input type="password" name="password" />
+            <input type="submit" value="Login" />
+        </form>
+    })
+})

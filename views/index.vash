@@ -1,7 +1,6 @@
 @html.extend('layout', function(model){
     @html.block('body', function(model) {
-    
-        <p>@model.user </p>
+
 
         @if (model.error){
             <p class="text-error"> Error Occurred: @model.error </p>

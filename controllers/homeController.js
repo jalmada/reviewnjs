@@ -1,5 +1,6 @@
 
 var data = require("../data");
+var auth = require("../auth");
 
 HomeController = (app) => {
     app.get("/",(req, res) => {
@@ -51,7 +52,9 @@ HomeController = (app) => {
         });
     });
 
-    app.get("/notes/:categoryName", (req, res) => {
+    app.get("/notes/:categoryName", 
+        auth.ensureAuthenticted,
+        (req, res) => {
         var categoryName = req.params.categoryName;
         data.getNotes(categoryName, (err, data) => {
             if(err){

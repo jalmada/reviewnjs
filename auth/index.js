@@ -18,6 +18,22 @@ userVerify = (username, password, next) => {
     });
 };
 
+ensureAuthenticted = (req, res, next) => {
+    if(req.isAuthenticated()){
+        next();
+    } else {
+        res.redirect("/login");
+    }
+};
+
+ensureApiIsAuthenticated = (req, res, next) => {
+    if(req.isAuthenticated()){
+        next();
+    } else {
+        res.status(401).send("Not Authorized");
+    }
+};
+
 auth = (app) => {
 
     passport.use(new localStrategy(userVerify));
@@ -85,4 +101,8 @@ auth = (app) => {
     });
 }
 
-module.exports = auth;
+module.exports = { 
+    auth: auth,
+    ensureAuthenticted: ensureAuthenticted,
+    ensureApiIsAuthenticated: ensureApiIsAuthenticated
+};

@@ -21,7 +21,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(session({secret: "PluralsightTheBoard", resave: false, saveUninitialized: true}));
 app.use(flash());
-auth(app);
+auth.auth(app);
 controllers.HomeController(app);
 controllers.NotesController(app);
 
